@@ -16,9 +16,16 @@ const createTask = async (task) => {
     ]);
     return { inserteId: createdTask.insertId };
 };
+const deleteTask = async (id) => {
+    const query = 'DELETE FROM tasks WHERE id = ?';
+    const removedTask = await connection.execute(query, [id]);
+    return removedTask;
+};
+
 module.exports = {
     getAll,
     createTask,
+    deleteTask,
 };
 
 //SELECT * FROM saleswebmvcappdb.salesrecord
