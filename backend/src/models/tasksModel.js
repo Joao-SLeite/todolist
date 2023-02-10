@@ -21,11 +21,18 @@ const deleteTask = async (id) => {
     const removedTask = await connection.execute(query, [id]);
     return removedTask;
 };
+const updateTask = async (id, task) => {
+    const query = 'UPDATE tasks SET title = ?, status = ? WHERE id = ? ';
+    const { title, status } = task;
+    const [updatedTask] = await connection.execute(query, [title, status, id]);
+    return updatedTask;
+};
 
 module.exports = {
     getAll,
     createTask,
     deleteTask,
+    updateTask,
 };
 
 //SELECT * FROM saleswebmvcappdb.salesrecord
