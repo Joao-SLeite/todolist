@@ -1,6 +1,7 @@
 const express = require('express');
 const tasksController = require('./Controllers/tasksController');
 const tasksMiddleware = require('./middlewares/tasksMiddleware');
+require('dotenv').config();
 
 const router = express.Router();
 
