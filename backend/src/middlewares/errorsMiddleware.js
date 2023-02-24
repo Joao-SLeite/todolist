@@ -6,4 +6,4 @@ const errors = (error, request, response, next) => {
     }
     next();
 };
-module.exports = { errors };
+module.exports = errors;

@@ -28,8 +28,12 @@ const validateFieldStatus = (request, response, next) => {
     }
     next();
 };
+const handleUrlNotFound = (request, response) => {
+    return response.status(404).json({ message: 'Página não encontrada' });
+};
 
 module.exports = {
     validateFieldTitle,
     validateFieldStatus,
+    handleUrlNotFound,
 };
