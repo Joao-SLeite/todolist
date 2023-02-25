@@ -6,9 +6,6 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node src/server.js",
-        "build": "npm install && npm run build:prod",
-        "build:prod": "your-build-command-here",
-        "postinstall": "npm install --production",
         "dev": "nodemon src/server.js"
     },
     "keywords": [],
