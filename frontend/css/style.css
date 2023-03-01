@@ -101,6 +101,7 @@ select:hover {
 .btn-action:nth-child(1) {
     background-color: orange;
     margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .btn-action:nth-child(2) {
