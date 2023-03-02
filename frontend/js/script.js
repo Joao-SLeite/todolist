@@ -33,6 +33,15 @@ const deleteTask = async (id) => {
     loadTasks();
 };
 
+const updateTask = async ({ id, title, status }) => {
+    await fetch(`https://api-todolist-fismed.cyclic.app/tasks/${id}`, {
+        method: 'put',
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify({ title, status }),
+    });
+    loadTasks();
+};
+
 const formatDate = (dateUTC) => {
     const options = {
         dateStyle: 'long',
@@ -77,6 +86,9 @@ const createRow = (task) => {
     const tdActions = createElement('td');
 
     const select = createSelect(status);
+    select.addEventListener('change', ({ target }) =>
+        updateTask({ ...task, status: target.value })
+    );
 
     const editButton = createElement(
         'button',
@@ -88,7 +100,24 @@ const createRow = (task) => {
         '',
         '<span class="material-symbols-outlined">delete</span>'
     );
+
+    const editForm = createElement('form');
+    const editInput = createElement('input');
+
+    editInput.value = title;
+    editForm.appendChild(editInput);
+
+    editForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        updateTask({ id, title: editInput.value, status });
+    });
+
     editButton.classList.add('btn-action');
+    editButton.addEventListener('click', () => {
+        tdTitle.innerText = '';
+        tdTitle.appendChild(editForm);
+    });
 
     deleteButton.classList.add('btn-action');
     deleteButton.addEventListener('click', () => {
