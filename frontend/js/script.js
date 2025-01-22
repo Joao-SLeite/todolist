@@ -4,7 +4,7 @@ const inputTask = document.querySelector('.input-task');
 
 const fetchTasks = async () => {
     const response = await fetch(
-        'https://api-todolist-fismed.cyclic.app/tasks'
+        'https://todolist-api-jps.onrender.com/tasks'
     );
     const tasks = await response.json();
     return tasks;
@@ -15,7 +15,7 @@ const addTask = async (event) => {
 
     const task = { title: inputTask.value };
 
-    await fetch('https://api-todolist-fismed.cyclic.app/tasks', {
+    await fetch('https://todolist-api-jps.onrender.com/tasks', {
         method: 'post',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(task),
@@ -26,7 +26,7 @@ const addTask = async (event) => {
 };
 
 const deleteTask = async (id) => {
-    await fetch(`https://api-todolist-fismed.cyclic.app/tasks/${id}`, {
+    await fetch(`https://todolist-api-jps.onrender.com/tasks/${id}`, {
         method: 'delete',
     });
 
@@ -34,7 +34,7 @@ const deleteTask = async (id) => {
 };
 
 const updateTask = async ({ id, title, status }) => {
-    await fetch(`https://api-todolist-fismed.cyclic.app/tasks/${id}`, {
+    await fetch(`https://todolist-api-jps.onrender.com/tasks/${id}`, {
         method: 'put',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({ title, status }),
